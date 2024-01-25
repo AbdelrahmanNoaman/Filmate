@@ -1,8 +1,16 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { TvShowsService } from './tv-shows.service';
 import { CreateTvShowDto } from './dto/create-tv-show.dto';
-import { UpdateTvShowDto } from './dto/update-tv-show.dto';
-
+import { UpdateTvShowCountryOfOriginDTO } from './dto/update-tv-show-country-of-origin.dto';
+import { UpdateTvShowSummaryDTO } from './dto/update-tv-show-summary.dto';
 @Controller('tv-shows')
 export class TvShowsController {
   constructor(private readonly tvShowsService: TvShowsService) {}
@@ -22,9 +30,23 @@ export class TvShowsController {
     return this.tvShowsService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTvShowDto: UpdateTvShowDto) {
-    return this.tvShowsService.update(+id, updateTvShowDto);
+  @Patch(':id/country')
+  updateCountryOfOrigin(
+    @Param('id') id: string,
+    @Body() updateTvShowCountryOfOriginDTO: UpdateTvShowCountryOfOriginDTO,
+  ) {
+    return this.tvShowsService.updateCountryOfOrigin(
+      +id,
+      updateTvShowCountryOfOriginDTO,
+    );
+  }
+
+  @Patch(':id/summary')
+  updateSummary(
+    @Param('id') id: string,
+    @Body() updateTvShowSummaryDTO: UpdateTvShowSummaryDTO,
+  ) {
+    return this.tvShowsService.updateSummary(+id, updateTvShowSummaryDTO);
   }
 
   @Delete(':id')

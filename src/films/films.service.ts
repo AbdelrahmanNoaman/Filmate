@@ -12,7 +12,6 @@ import { UpdateFilmMoneyDto } from './dto/update-film-money.dto';
 
 @Injectable()
 export class FilmsService {
-  
   constructor(
     @InjectRepository(Film) private filmsRepository: Repository<Film>,
   ) {}
@@ -38,26 +37,28 @@ export class FilmsService {
 
   async updateLength(id: number, updateFilmLengthDto: UpdateFilmLengthDto) {
     const film = await this.findOne(id);
-    if (film) {
-      film.length = updateFilmLengthDto.length;
-    }
+    film.length = updateFilmLengthDto.length;
     let updatedFilm = await this.filmsRepository.save(film);
     return updatedFilm;
   }
 
+
   async updateMoney(id: number, updateFilmMoneyDto: UpdateFilmMoneyDto) {
     const film = await this.findOne(id);
-    if (film) {
-      if (!updateFilmMoneyDto.budget && !updateFilmMoneyDto.grossWorldwide)
-        throw new BadRequestException(
-          'Either budget or gross worldwide must be provided',
-        );
-      if (updateFilmMoneyDto.budget) film.budget = updateFilmMoneyDto.budget;
-      if (updateFilmMoneyDto.grossWorldwide)
-        film.grossWorldwide = updateFilmMoneyDto.grossWorldwide;
-    }
+    this.verifyFilmMoneyData(updateFilmMoneyDto, film);
     let updatedFilm = await this.filmsRepository.save(film);
     return updatedFilm;
+  }
+
+  verifyFilmMoneyData(updateFilmMoneyDto: UpdateFilmMoneyDto, film: Film) {
+    if (!updateFilmMoneyDto.budget && !updateFilmMoneyDto.grossWorldwide)
+      throw new BadRequestException(
+        'Either budget or gross worldwide must be provided',
+      );
+    if (updateFilmMoneyDto.budget) film.budget = updateFilmMoneyDto.budget;
+    if (updateFilmMoneyDto.grossWorldwide)
+      film.grossWorldwide = updateFilmMoneyDto.grossWorldwide;
+    return film;
   }
 
   async remove(id: number) {
