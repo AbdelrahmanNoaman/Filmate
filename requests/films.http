@@ -3,9 +3,9 @@ POST http://localhost:3000/film
 Content-Type: application/json
 
 {
-    "name":"B7bk",
+    "name":"B7bk wana kman",
     "dateOfRelease":"2024-01-01 12:5:00",
-    "summary":"Nouran",
+    "summary":"Nu3man",
     "countryOfOrigin":"Egypt"
 }
 
@@ -15,12 +15,12 @@ GET http://localhost:3000/film
 
 ###---------------------------------------
 ###Getting specific film
-GET http://localhost:3000/film/7
+GET http://localhost:3000/film/9
 
 
 ###---------------------------------------
 ###update film length
-PATCH  http://localhost:3000/film/7/length
+PATCH  http://localhost:3000/film/9/length
 Content-Type: application/json
 
 {

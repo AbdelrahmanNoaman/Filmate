@@ -64,4 +64,12 @@ export class Film {
     nullable: true,
   })
   deletedAt?: Date;
+
+  @ApiProperty({ required: false })
+  @Column({
+    type: 'boolean',
+    nullable: true,
+    default: false,
+  })
+  isDeleted?: Boolean;
 }

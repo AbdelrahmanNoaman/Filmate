@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateFilmDto } from './dto/create-film.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Film } from './entities/film.entity';
@@ -16,20 +16,24 @@ export class FilmsService {
   }
 
   findAll() {
-    return this.filmsRepository.findBy({ deletedAt: null });
+    return this.filmsRepository.findBy({ isDeleted: false });
   }
 
-  async findOne(id: number): Promise<Film> {
-    return this.filmsRepository.findOneOrFail({
-      where: { id: id, deletedAt: null },
-    });
+  async findOne(id: number) {
+    try {
+      const film = await this.filmsRepository.findOneOrFail({
+        where: { id: id, isDeleted: false },
+      });
+      return film;
+    } catch (error) {
+      throw new NotFoundException('Film not found or deleted');
+    }
   }
 
   async updateLength(id: number, updateFilmLengthDto: UpdateFilmLengthDto) {
     const film = await this.findOne(id);
     if (film) {
       film.length = updateFilmLengthDto.length;
-      console.log(film);
     }
     let updatedFilm = await this.filmsRepository.save(film);
     return updatedFilm;
@@ -39,6 +43,7 @@ export class FilmsService {
     const film = await this.findOne(id);
     if (film) {
       film.deletedAt = new Date();
+      film.isDeleted = true;
     }
     let deletedFilm = await this.filmsRepository.save(film);
     return deletedFilm;
