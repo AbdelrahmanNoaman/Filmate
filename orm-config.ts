@@ -1,6 +1,7 @@
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 import { config } from 'dotenv';
 import { User } from 'src/users/entities/user.entity';
+import { Film } from 'src/films/entities/film.entity';
 config();
 
 const configuration: PostgresConnectionOptions = {
@@ -11,6 +12,6 @@ const configuration: PostgresConnectionOptions = {
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE_NAME,
   synchronize: Boolean(process.env.SYNCHRONIZE),
-  entities: [User],
+  entities: [User, Film],
 };
 export default configuration;
