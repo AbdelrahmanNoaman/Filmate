@@ -57,4 +57,11 @@ export class Film {
     nullable: true,
   })
   grossWorldwide?: number;
+
+  @ApiProperty({ required: false })
+  @Column({
+    type: 'date',
+    nullable: true,
+  })
+  deletedAt?: Date;
 }

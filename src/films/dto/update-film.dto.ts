@@ -1,4 +1,10 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateFilmDto } from './create-film.dto';
-
-export class UpdateFilmDto extends PartialType(CreateFilmDto) {}
+import { ApiProperty } from '@nestjs/swagger';
+import { IsNotEmpty, IsNumber, Max, Min } from 'class-validator';
+export class UpdateFilmLengthDto {
+  @ApiProperty()
+  @IsNotEmpty()
+  @Max(10)
+  @IsNumber()
+  @Min(0)
+  length: number;
+}

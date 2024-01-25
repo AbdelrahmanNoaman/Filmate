@@ -1,0 +1,32 @@
+#Creating a film
+POST http://localhost:3000/film
+Content-Type: application/json
+
+{
+    "name":"B7bk",
+    "dateOfRelease":"2024-01-01 12:5:00",
+    "summary":"Nouran",
+    "countryOfOrigin":"Egypt"
+}
+
+###---------------------------------------
+###Getting all films
+GET http://localhost:3000/film
+
+###---------------------------------------
+###Getting specific film
+GET http://localhost:3000/film/7
+
+
+###---------------------------------------
+###update film length
+PATCH  http://localhost:3000/film/7/length
+Content-Type: application/json
+
+{
+    "length":3.95
+}
+###---------------------------------------
+###Delete a film
+DELETE http://localhost:3000/film/9
+

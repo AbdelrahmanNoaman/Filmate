@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { FilmsService } from './films.service';
 import { CreateFilmDto } from './dto/create-film.dto';
-import { UpdateFilmDto } from './dto/update-film.dto';
+import { UpdateFilmLengthDto } from './dto/update-film.dto';
 
 @Controller('film')
 export class FilmsController {
@@ -23,7 +23,7 @@ export class FilmsController {
       console.log(error);
     }
   }
-  /*
+
   @Get()
   findAll() {
     return this.filmsService.findAll();
@@ -34,14 +34,16 @@ export class FilmsController {
     return this.filmsService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateFilmDto: UpdateFilmDto) {
-    return this.filmsService.update(+id, updateFilmDto);
+  @Patch(':id/length')
+  update(
+    @Param('id') id: string,
+    @Body() updateFilmLengthDto: UpdateFilmLengthDto,
+  ) {
+    return this.filmsService.updateLength(+id,updateFilmLengthDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.filmsService.remove(+id);
   }
-  */
 }
