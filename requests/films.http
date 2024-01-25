@@ -3,9 +3,9 @@ POST http://localhost:3000/film
 Content-Type: application/json
 
 {
-    "name":"B7bk wana kman",
+    "name":"The Prestige",
     "dateOfRelease":"2024-01-01 12:5:00",
-    "summary":"Nu3man",
+    "summary":"Christian Bale",
     "countryOfOrigin":"Egypt"
 }
 
