@@ -32,4 +32,19 @@ export class TvShow {
   @ApiProperty({ required: false })
   @Column()
   countryOfOrigin?: string;
+
+  @ApiProperty({ required: false })
+  @Column({
+    type: 'date',
+    nullable: true,
+  })
+  deletedAt?: Date;
+
+  @ApiProperty({ required: false })
+  @Column({
+    type: 'boolean',
+    nullable: true,
+    default: false,
+  })
+  isDeleted?: Boolean;
 }

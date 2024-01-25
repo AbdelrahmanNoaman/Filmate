@@ -12,6 +12,7 @@ import { UpdateFilmMoneyDto } from './dto/update-film-money.dto';
 
 @Injectable()
 export class FilmsService {
+  
   constructor(
     @InjectRepository(Film) private filmsRepository: Repository<Film>,
   ) {}
