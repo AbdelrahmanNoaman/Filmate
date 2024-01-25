@@ -58,16 +58,29 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+### Technologies
+- **NEST.js**: Powers the backend, providing a scalable and efficient framework.
+- **TypeORM**: Streamlines database interactions, enhancing development efficiency.
+- **PostgreSQL**: Serves as the primary database for efficient data storage.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Design Patterns
+- **Repository Pattern**: Enhances maintainability by separating data retrieval logic.
+- **Dependency Injection**: Facilitates a flexible and modular design, improving code organization.
 
-## Stay in touch
+These technologies and design patterns contribute to the application's performance, scalability, and maintainability.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+## 👥 Contributors
 
-## License
+<table>
+  <tr>
+    <td align="center">
+    <a href="https://github.com/YourGitHubUsername" target="_black">
+    <img src="https://avatars.githubusercontent.com/u/YourGitHubUserID?s=400&u=YourAvatarURL&v=4"   width="150px;" alt="Your Name"/>
+    <br />
+    <sub><b>Your Name</b></sub></a>
+    </td>
+  </tr>
+ </table>
 
-Nest is [MIT licensed](LICENSE).
+ ## 📄 License
+This project is licensed under the [MIT License](LICENSE.md).
