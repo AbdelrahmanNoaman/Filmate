@@ -6,9 +6,17 @@ import { ActorsModule } from './actors/actors.module';
 import { FilmsModule } from './films/films.module';
 import { TvShowsModule } from './tv-shows/tv-shows.module';
 import { EpisodesModule } from './episodes/episodes.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import configuration from 'orm-config';
 
 @Module({
-  imports: [UsersModule, ActorsModule, FilmsModule, TvShowsModule, EpisodesModule],
+  imports: [
+    UsersModule,
+    ActorsModule,
+    FilmsModule,
+    TvShowsModule,
+    EpisodesModule,
+  TypeOrmModule.forRoot(configuration)],
   controllers: [AppController],
   providers: [AppService],
 })
