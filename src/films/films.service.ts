@@ -1,9 +1,14 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateFilmDto } from './dto/create-film.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Film } from './entities/film.entity';
 import { Repository } from 'typeorm';
 import { UpdateFilmLengthDto } from './dto/update-film.dto';
+import { UpdateFilmMoneyDto } from './dto/update-film-money.dto';
 
 @Injectable()
 export class FilmsService {
@@ -34,6 +39,21 @@ export class FilmsService {
     const film = await this.findOne(id);
     if (film) {
       film.length = updateFilmLengthDto.length;
+    }
+    let updatedFilm = await this.filmsRepository.save(film);
+    return updatedFilm;
+  }
+
+  async updateMoney(id: number, updateFilmMoneyDto: UpdateFilmMoneyDto) {
+    const film = await this.findOne(id);
+    if (film) {
+      if (!updateFilmMoneyDto.budget && !updateFilmMoneyDto.grossWorldwide)
+        throw new BadRequestException(
+          'Either budget or gross worldwide must be provided',
+        );
+      if (updateFilmMoneyDto.budget) film.budget = updateFilmMoneyDto.budget;
+      if (updateFilmMoneyDto.grossWorldwide)
+        film.grossWorldwide = updateFilmMoneyDto.grossWorldwide;
     }
     let updatedFilm = await this.filmsRepository.save(film);
     return updatedFilm;

@@ -25,7 +25,15 @@ Content-Type: application/json
 
 {
     "length":3.95
+}###---------------------------------------
+###update film money
+PATCH  http://localhost:3000/film/7/money
+Content-Type: application/json
+
+{
+    "budget":682200
 }
+
 ###---------------------------------------
 ###Delete a film
 DELETE http://localhost:3000/film/9
