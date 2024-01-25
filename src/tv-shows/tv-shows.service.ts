@@ -4,6 +4,7 @@ import { UpdateTvShowDto } from './dto/update-tv-show.dto';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TvShow } from './entities/tv-show.entity';
+import { NotFoundException } from '@nestjs/common';
 @Injectable()
 export class TvShowsService {
   constructor(
@@ -19,12 +20,21 @@ export class TvShowsService {
     return this.tvShowRepository.findBy({ isDeleted: false });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} tvShow`;
+  async findOne(id: number) {
+    try {
+      const film = await this.tvShowRepository.findOneOrFail({
+        where: { id: id, isDeleted: false },
+      });
+      return film;
+    } catch (error) {
+      throw new NotFoundException('Film not found or deleted');
+    }
   }
 
-  update(id: number, updateTvShowDto: UpdateTvShowDto) {
-    return `This action updates a #${id} tvShow`;
+  async update(id: number, updateTvShowDto: UpdateTvShowDto) {
+    const film = await this.findOne(id);
+    let updatedFilm = await this.tvShowRepository.save(film);
+    return updatedFilm;
   }
 
   remove(id: number) {
