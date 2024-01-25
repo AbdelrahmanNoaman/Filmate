@@ -11,11 +11,11 @@ export class Film {
   @Column()
   name: string;
 
-  @ApiProperty()
+  @ApiProperty({ required: false })
   @Column({
     type: 'date',
   })
-  dateOfRelease: Date;
+  dateOfRelease?: Date;
 
   @ApiProperty()
   @Column({
@@ -23,11 +23,11 @@ export class Film {
   })
   length: number;
 
-  @ApiProperty()
+  @ApiProperty({ required: false })
   @Column({
     type: 'float4',
   })
-  rating: number;
+  rating?: number;
 
   @ApiProperty()
   @Column()
@@ -41,15 +41,15 @@ export class Film {
   @Column()
   countryOfOrigin: string;
 
-  @ApiProperty()
+  @ApiProperty({ required: false })
   @Column({
     type: 'float',
   })
-  budget: number;
+  budget?: number;
 
-  @ApiProperty()
+  @ApiProperty({ required: false })
   @Column({
     type: 'float',
   })
-  grossWorldwide: number;
+  grossWorldwide?: number;
 }
