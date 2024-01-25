@@ -22,42 +22,26 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+# 🚀 Filmate
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- 📚 Overview
+- ✨ Features
+- 🔧 Technologies and Design Patterns
+- 👥 Contributors
+- 📄 License
 
-## Installation
+## 📚 Overview
+Filmate is an IMDb replica, providing a platform to view detailed information about movies and series. Built using NEST.js and TypeORM, it leverages PostgreSQL as its database. The application allows users to explore and retrieve data on various films and series.
 
-```bash
-$ npm install
-```
+## ✨ Features
+- **Film and Series Information Retrieval**: Retrieve detailed information about movies and series.
+- **Actor Information Retrieval**: Access information about actors and their filmography.
+- **Wishlist Management**: Add films to your wishlist for future reference.
+- **Film Voting System**: Vote for films and contribute to the rating system.
+- **Top Rated Films**: Explore a list of top-rated films based on user voting.
 
-## Running the app
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
+## 🔧 Technologies and Design Patterns
 ### Technologies
 - **NEST.js**: Powers the backend, providing a scalable and efficient framework.
 - **TypeORM**: Streamlines database interactions, enhancing development efficiency.
