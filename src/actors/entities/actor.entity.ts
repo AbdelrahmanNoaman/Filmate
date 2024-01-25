@@ -1,5 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Film } from 'src/films/entities/film.entity';
+import { TvShow } from 'src/tv-shows/entities/tv-show.entity';
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 @Entity('actors')
 export class Actor {
   @ApiProperty()
@@ -16,13 +18,13 @@ export class Actor {
   })
   dateOfBirth: Date;
 
-  @ApiProperty({required:false})
+  @ApiProperty({ required: false })
   @Column({
     type: 'float4',
   })
   height?: number;
 
-  @ApiProperty({required:false})
+  @ApiProperty({ required: false })
   @Column()
   picture?: string;
 
@@ -33,4 +35,10 @@ export class Actor {
   @ApiProperty()
   @Column()
   countryOfOrigin: string;
+
+  @ManyToMany((type) => Film, (film) => film.actors)
+  films: Film[];
+
+  @ManyToMany((type) => TvShow, (tvShow) => tvShow.actors)
+  tvShows: TvShow[];
 }

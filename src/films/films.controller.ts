@@ -37,6 +37,12 @@ export class FilmsController {
     return await this.filmsService.findOne(+id);
   }
 
+  @Get(':id/actors')
+  @UseFilters(new NotFoundExceptionFilter())
+  async findFilmActors(@Param('id') id: string) {
+    return await this.filmsService.findFilmActors(+id);
+  }
+
   @Patch(':id/length')
   @UseFilters(new NotFoundExceptionFilter())
   update(

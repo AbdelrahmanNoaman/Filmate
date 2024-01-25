@@ -1,5 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinTable, PrimaryGeneratedColumn } from 'typeorm';
+import { ManyToMany } from 'typeorm';
+import { Actor } from 'src/actors/entities/actor.entity';
 //We still need to add categories , actors , directors , languages , production companies , photos
 //We won't need an isolated entity for seasons as we will include the season number in the episodes
 //so we can get any needed data about the season from the episodes uploaded in that season
@@ -48,4 +50,8 @@ export class TvShow {
     default: false,
   })
   isDeleted?: Boolean;
+
+  @ManyToMany((type) => Actor, (actor) => actor.films)
+  @JoinTable()
+  actors: Actor[];
 }

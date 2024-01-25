@@ -15,7 +15,11 @@ GET http://localhost:3000/film
 
 ###---------------------------------------
 ###Getting specific film
-GET http://localhost:3000/film/9
+GET http://localhost:3000/film/11
+
+###---------------------------------------
+###Getting specific film actors
+GET http://localhost:3000/film/11/actors
 
 
 ###---------------------------------------

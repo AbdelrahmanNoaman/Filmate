@@ -21,7 +21,11 @@ export class FilmsService {
   }
 
   findAll() {
-    return this.filmsRepository.findBy({ isDeleted: false });
+    try {
+      return this.filmsRepository.findBy({ isDeleted: false });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async findOne(id: number) {
@@ -35,13 +39,24 @@ export class FilmsService {
     }
   }
 
+  async findFilmActors(id: number) {
+    try {
+      return this.filmsRepository
+        .createQueryBuilder('film')
+        .leftJoinAndSelect('film.actors', 'actor')
+        .where({ id: id, isDeleted: false })
+        .getMany();
+    } catch (error) {
+      throw new NotFoundException('Film not found or deleted');
+    }
+  }
+
   async updateLength(id: number, updateFilmLengthDto: UpdateFilmLengthDto) {
     const film = await this.findOne(id);
     film.length = updateFilmLengthDto.length;
     let updatedFilm = await this.filmsRepository.save(film);
     return updatedFilm;
   }
-
 
   async updateMoney(id: number, updateFilmMoneyDto: UpdateFilmMoneyDto) {
     const film = await this.findOne(id);

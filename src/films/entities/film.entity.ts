@@ -1,5 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Actor } from 'src/actors/entities/actor.entity';
+import { Column, Entity, JoinTable, PrimaryGeneratedColumn } from 'typeorm';
+import { ManyToMany } from 'typeorm';
 //We still need to add categories , actors , directors , languages , production companies , photos
 @Entity('films')
 export class Film {
@@ -72,4 +74,8 @@ export class Film {
     default: false,
   })
   isDeleted?: Boolean;
+
+  @ManyToMany((type) => Actor, (actor) => actor.films)
+  @JoinTable()
+  actors: Actor[];
 }
