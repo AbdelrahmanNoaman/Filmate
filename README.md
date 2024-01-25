@@ -74,10 +74,10 @@ These technologies and design patterns contribute to the application's performan
 <table>
   <tr>
     <td align="center">
-    <a href="https://github.com/YourGitHubUsername" target="_black">
-    <img src="https://avatars.githubusercontent.com/u/YourGitHubUserID?s=400&u=YourAvatarURL&v=4"   width="150px;" alt="Your Name"/>
+    <a href="https://github.com/AbdelrahmanNoaman" target="_black">
+    <img src="https://avatars.githubusercontent.com/u/76150639?s=400&u=4f3894f139c1383fadc15efdbed6207e936a2a20&v=4"   width="150px;" alt="Abdelrahman Noaman"/>
     <br />
-    <sub><b>Your Name</b></sub></a>
+    <sub><b>Abdelrahman Noaman</b></sub></a>
     </td>
   </tr>
  </table>
