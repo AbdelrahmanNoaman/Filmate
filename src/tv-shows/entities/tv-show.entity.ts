@@ -16,12 +16,13 @@ export class TvShow {
   name: string;
 
   @ApiProperty({ required: false })
-  @Column()
+  @Column({ nullable: true })
   nickname?: string;
 
   @ApiProperty({ required: false })
   @Column({
     type: 'float4',
+    nullable: true,
   })
   rating?: number;
 
@@ -30,7 +31,7 @@ export class TvShow {
   summary: string;
 
   @ApiProperty({ required: false })
-  @Column()
+  @Column({ nullable: true })
   countryOfOrigin?: string;
 
   @ApiProperty({ required: false })

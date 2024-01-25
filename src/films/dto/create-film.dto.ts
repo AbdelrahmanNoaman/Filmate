@@ -1,10 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import {
-  IsDate,
   IsNotEmpty,
-  Max,
   MaxLength,
-  Min,
   MinLength,
 } from 'class-validator';
 export class CreateFilmDto {

@@ -1,0 +1,41 @@
+#Creating a tv show
+POST http://localhost:3000/tv-shows
+Content-Type: application/json
+
+{
+    "name":"Prison break",
+    "dateOfRelease":"2024-01-01 12:5:00",
+    "summary":"Westros",
+    "countryOfOrigin":"Finland"
+}
+
+###---------------------------------------
+###Getting all Tv shows
+GET http://localhost:3000/tv-shows
+
+###---------------------------------------
+###Getting specific tv show
+GET http://localhost:3000/tv-shows/5
+
+
+###---------------------------------------
+###update tv show country of origin
+PATCH  http://localhost:3000/tv-shows/2/country
+Content-Type: application/json
+
+{
+    "countryOfOrigin":"England"
+}
+###---------------------------------------
+###update tv show summary
+PATCH  http://localhost:3000/tv-shows/2/summary
+Content-Type: application/json
+
+{
+    "summary":"Ahmed mohamed amkdfmadkmdakmfska"
+}
+
+###---------------------------------------
+###Delete a film
+DELETE http://localhost:3000/tv-shows/2
+

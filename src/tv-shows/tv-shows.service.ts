@@ -52,7 +52,11 @@ export class TvShowsService {
     return updatedTvShow;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} tvShow`;
+  async remove(id: number) {
+    const tvShow = await this.findOne(id);
+    tvShow.deletedAt = new Date();
+    tvShow.isDeleted = true;
+    let updatedTvShow = await this.tvShowRepository.save(tvShow);
+    return updatedTvShow;
   }
 }
