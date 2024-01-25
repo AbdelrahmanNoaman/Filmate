@@ -1,17 +1,29 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { FilmsService } from './films.service';
 import { CreateFilmDto } from './dto/create-film.dto';
 import { UpdateFilmDto } from './dto/update-film.dto';
 
-@Controller('films')
+@Controller('film')
 export class FilmsController {
   constructor(private readonly filmsService: FilmsService) {}
 
   @Post()
   create(@Body() createFilmDto: CreateFilmDto) {
-    return this.filmsService.create(createFilmDto);
+    try {
+      return this.filmsService.create(createFilmDto);
+    } catch (error) {
+      console.log(error);
+    }
   }
-
+  /*
   @Get()
   findAll() {
     return this.filmsService.findAll();
@@ -31,4 +43,5 @@ export class FilmsController {
   remove(@Param('id') id: string) {
     return this.filmsService.remove(+id);
   }
+  */
 }

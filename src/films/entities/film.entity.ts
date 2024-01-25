@@ -14,18 +14,21 @@ export class Film {
   @ApiProperty({ required: false })
   @Column({
     type: 'date',
+    nullable: true,
   })
   dateOfRelease?: Date;
-
-  @ApiProperty()
-  @Column({
-    type: 'float4',
-  })
-  length: number;
 
   @ApiProperty({ required: false })
   @Column({
     type: 'float4',
+    nullable: true,
+  })
+  length?: number;
+
+  @ApiProperty({ required: false })
+  @Column({
+    type: 'float4',
+    nullable: true,
   })
   rating?: number;
 
@@ -34,7 +37,7 @@ export class Film {
   summary: string;
 
   @ApiProperty({ required: false })
-  @Column()
+  @Column({ nullable: true })
   poster?: string;
 
   @ApiProperty()
@@ -44,12 +47,14 @@ export class Film {
   @ApiProperty({ required: false })
   @Column({
     type: 'float',
+    nullable: true,
   })
   budget?: number;
 
   @ApiProperty({ required: false })
   @Column({
     type: 'float',
+    nullable: true,
   })
   grossWorldwide?: number;
 }
