@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Column, Entity, JoinTable, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 //We still need to add categories , actors , directors , languages , production companies , photos
 @Entity('episodes')
 export class Episode {
@@ -11,12 +11,11 @@ export class Episode {
   @Column()
   name: string;
 
-  @ApiProperty({ required: false })
+  @ApiProperty()
   @Column({
     type: 'date',
-    nullable: true,
   })
-  dateOfRelease?: Date;
+  dateOfRelease: Date;
 
   @ApiProperty({ required: false })
   @Column({
@@ -25,26 +24,17 @@ export class Episode {
   })
   length?: number;
 
-  @ApiProperty({ required: false })
+  @ApiProperty()
   @Column({
     type: 'int',
-    nullable: true,
   })
-  seasonNumber?: number;
+  seasonNumber: number;
 
-  @ApiProperty({ required: false })
+  @ApiProperty()
   @Column({
     type: 'int',
-    nullable: true,
   })
-  episodeNumber?: number;
-
-  @ApiProperty({ required: false })
-  @Column({
-    type: 'float4',
-    nullable: true,
-  })
-  rating?: number;
+  episodeNumber: number;
 
   @ApiProperty()
   @Column()
