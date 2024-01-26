@@ -27,13 +27,6 @@ export class Film {
   })
   length?: number;
 
-  @ApiProperty({ required: false })
-  @Column({
-    type: 'float4',
-    nullable: true,
-  })
-  rating?: number;
-
   @ApiProperty()
   @Column()
   summary: string;
